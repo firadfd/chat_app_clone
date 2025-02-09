@@ -13,13 +13,15 @@ class UiHelper {
       {required String text,
       double? fontSize,
       Color? color,
-      FontWeight? fontWeight
-      ,required BuildContext context}) {
+      FontWeight? fontWeight,
+      required BuildContext context}) {
     return Text(text,
         style: TextStyle(
             fontSize: fontSize,
-            color: color ?? (Theme.of(context).brightness == Brightness.dark
-                ? AppColors.textdarkmode : AppColors.textlightmode),
+            color: color ??
+                (Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.textdarkmode
+                    : AppColors.textlightmode),
             fontWeight: fontWeight),
         textAlign: TextAlign.center);
   }
@@ -33,7 +35,7 @@ class UiHelper {
           style: ElevatedButton.styleFrom(
               backgroundColor: color,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12))),
+                  borderRadius: BorderRadius.circular(26))),
           onPressed: () {
             callback();
           },
@@ -41,6 +43,39 @@ class UiHelper {
             text,
             style: TextStyle(fontSize: 16, color: Colors.white),
           )),
+    );
+  }
+
+  static customTextField(
+      {required TextEditingController controller,
+      required String text,
+      required TextInputType textInputType,
+      required BuildContext context,
+      required IconData iconData}) {
+    return Container(
+      height: 45,
+      width: 360,
+      decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.containerdarkmode
+              : AppColors.containerlightmode,
+          borderRadius: BorderRadius.circular(7)),
+      child: TextField(
+        controller: controller,
+        keyboardType: textInputType,
+        decoration: InputDecoration(
+            hintText: text,
+            prefixIcon: Icon(
+              iconData,
+              color: AppColors.iconlight,
+            ),
+            hintStyle: TextStyle(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.hintdarkmode
+                    : AppColors.hintlightmode,
+                fontSize: 14),
+            border: InputBorder.none),
+      ),
     );
   }
 }

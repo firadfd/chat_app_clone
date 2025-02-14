@@ -51,7 +51,7 @@ class UiHelper {
       required String text,
       required TextInputType textInputType,
       required BuildContext context,
-      required IconData iconData}) {
+      IconData? iconData}) {
     return Container(
       height: 45,
       width: 360,
@@ -65,10 +65,10 @@ class UiHelper {
         keyboardType: textInputType,
         decoration: InputDecoration(
             hintText: text,
-            prefixIcon: Icon(
+            prefixIcon: iconData != null ? Icon(
               iconData,
               color: AppColors.iconlight,
-            ),
+            ) : null,
             hintStyle: TextStyle(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? AppColors.hintdarkmode

@@ -77,8 +77,7 @@ class OtpScreen extends StatelessWidget {
             SizedBox(height: 30),
             UiHelper.customButton(
                 text: "Resend Code",
-                callback: () {},
-                color: Colors.blue.shade100)
+                callback: () {})
           ],
         ),
       ),
